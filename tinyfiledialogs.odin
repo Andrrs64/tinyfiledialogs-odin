@@ -1,10 +1,16 @@
 package tinyfiledialogs
 import "core:c"
 
-foreign import lib {
-	"tinyfiledialogs.lib",
-	"system:comdlg32.lib",
-	"system:Ole32.lib",
+when ODIN_OS == .Windows {
+    foreign import lib {
+        "tinyfiledialogs.lib",
+        "system:comdlg32.lib",
+        "system:Ole32.lib",
+    }
+} else when ODIN_OS == .Linux {
+    foreign import lib {
+        "tinyfiledialogs_linux.a",
+    }
 }
 
 foreign lib {
