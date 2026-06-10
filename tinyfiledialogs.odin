@@ -11,6 +11,12 @@ when ODIN_OS == .Windows {
     foreign import lib {
         "tinyfiledialogs_linux.a",
     }
+} else when ODIN_OS == .Darwin {
+    foreign import lib {
+        "tinyfiledialogs_darwin.a",
+    }
+} else {
+    #panic("Unsupported OS")
 }
 
 foreign lib {
